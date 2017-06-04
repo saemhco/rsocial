@@ -144,7 +144,14 @@ class AdminSolicitudesController extends Controller
      */
     public function destroy($id)
     {
+        
         $u=User::find($id);
+        //Hay algunas solicitudes que no tienen datos, esos deben eliminarse sin enviar email
+        if ($u->email=='' || $u->nombres=='' || $u->apellidos=='' || $u->dni=='') {
+            User::destroy($id);
+            return Redirect::to('solicitudes')->with('verde','Se eliminó la solicitud');
+        }
+        //Lo demas por la vía legal
         $asunto='Registro a la plataforma: \'wwww.proyectosenfermeria.com\'';
         $destinatario=$u->email;
         $data = array('contenido' => $u->nombres." ".$u->apellidos);

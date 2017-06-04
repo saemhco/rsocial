@@ -40,6 +40,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        //Para los graciosos que le quitan el required
+        if ($request->nombres=='' || $request->apellidos=='' || $request->email=='') {
+            $mensaje='Usuario no registrado';
+            return Redirect::to('/')->with('rojo', $mensaje);
+        }
         $usuarios=User::get();
             foreach ($usuarios as $usuario) {
                 if ($usuario->dni==$request->get('dni')) {
@@ -51,6 +56,7 @@ class UserController extends Controller
                     return Redirect::to('/')->with('rojo', $mensaje);
                 }
             }
+        
 
         $u=new User;
         $u->nombres=$request->nombres;
