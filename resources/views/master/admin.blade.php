@@ -130,7 +130,7 @@ Carbon::setLocale('es');
                         <span>Configuraciones</span>
                       </a>
                     </li>
-                    <li><a href="#" data-toggle="modal" data-target="#ayuda"><i class="fa fa-info pull-right"></i>Ayuda </a></li>
+                    <li><a href="https://youtu.be/7cIhq4DvxsU" target="_blank"><i class="fa fa-info pull-right"></i>Ayuda </a></li>
                     <li><a href="{{url('log')}}"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
                   </ul>
                 </li>
@@ -209,7 +209,7 @@ Carbon::setLocale('es');
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Facultad de enfermería <a href="https://colorlib.com"> - UNHEVAL</a>
+            Facultad de enfermería <a href="https://colorlib.com"> Saúl Escandon</a>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -217,7 +217,6 @@ Carbon::setLocale('es');
       </div>
     </div>
     @include('master.editar.edadmin')
-    @include('master.extras.ayuda')
     <!-- jQuery -->
     {!!Html::script('vendors/jquery/dist/jquery.min.js')!!}
     <!-- Bootstrap -->
