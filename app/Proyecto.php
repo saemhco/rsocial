@@ -8,7 +8,7 @@ class Proyecto extends Model
 {
     protected $table = 'proyectos';
     protected $fillable = [
-    	'docente_id','curso_id','semestre','ciclo','seccion','tipo','titulo','porcentaje','objetivos', 'justificacion','logros','dificultades','beneficiario','lugar','obs'
+    	'docente_id','curso_id','semestre','ciclo','seccion','tipo','titulo','resolucion_informe','resolucion_proyecto','porcentaje','objetivos', 'justificacion','logros','dificultades','lugar','beneficiario','satisfaccion_involucrados','registro_participacion','grupo_interes','obs','evidencias'
     ];
 
     public function docente(){
