@@ -120,7 +120,7 @@ Carbon::setLocale('es');
                     <li><a href="#"  onclick="editar('{{Auth::user()->id}}')" data-toggle="modal" data-target="#EditarD"><i class="fa fa-cogs pull-right"></i><span>
                     {{Auth::user()->nombres}}</a></li>
                     
-                    <li><a href="https://youtu.be/9mVvSxZNCAQ" target="_blank"><i class="fa fa-info pull-right"></i>Ayuda </a></li>
+                    <li><a href="https://youtu.be/ssdyGUaBwfw" target="_blank"><i class="fa fa-info pull-right"></i>Ayuda </a></li>
                     <li><a href="{{url('log')}}"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
                   </ul>
                 </li>
