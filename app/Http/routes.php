@@ -83,3 +83,33 @@ Route::get('descargar/{archivo}', ['middleware' => 'auth', function ($archivo) {
  		return back()->with('naranja','no se encontro ningun documento');
  	}
 }]);
+//Doc Adjuntos
+    Route::get('rp_descargar/{archivo}', ['middleware' => 'auth', function ($archivo) {
+         $url = Storage_path('storage/proyectos/registro/'.$archivo);
+         if (Storage::exists('proyectos/registro/'.$archivo))
+         {
+            //return Storage_path($archivo);
+           return response()->download($url);
+         }
+         //si no se encuentra lanzamos un error 404.
+         return "No hay archivo";
+    }]);
+    Route::get('excel_descargar/{archivo}', ['middleware' => 'auth', function ($archivo) {
+         $url = Storage_path('storage/proyectos/excel/'.$archivo);
+         if (Storage::exists('proyectos/excel/'.$archivo))
+         {
+            //return Storage_path($archivo);
+           return response()->download($url);
+         }
+         //si no se encuentra lanzamos un error 404.
+         return "No hay archivo";
+    }]);Route::get('evidencia_descargar/{archivo}', ['middleware' => 'auth', function ($archivo) {
+         $url = Storage_path('storage/proyectos/evidencias/'.$archivo);
+         if (Storage::exists('proyectos/evidencias/'.$archivo))
+         {
+            //return Storage_path($archivo);
+           return response()->download($url);
+         }
+         //si no se encuentra lanzamos un error 404.
+         return "No hay archivo";
+    }]);

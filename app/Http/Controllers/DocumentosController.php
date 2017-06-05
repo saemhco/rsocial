@@ -167,7 +167,8 @@ class DocumentosController extends Controller
      */
     public function destroy($id)
     {
-      if (Proyecto::find($id)->docente_id!=Auth::user()->id) {
+        $py=Proyecto::find($id);
+      if ($py->docente_id!=Auth::user()->id) {
         return Redirect::to('docenteproyecto')->with('naranja','Solo puede eliminar sus proyectos');
       }
         $ds=Documento::where('proyecto_id',$id)->get();
@@ -177,7 +178,25 @@ class DocumentosController extends Controller
                 Documento::destroy($d->id);  
             }
         }
+        //Eliminamos los doc Adjuntos
+        if($py->registro_participacion!=''){
+            if (Storage::exists('proyectos/registro/'.$py->registro_participacion)){
+                Storage::delete('proyectos/registro/'.$py->registro_participacion);
+            }
+        }
+
+        if($py->sat_inv_excel!=''){
+            if (Storage::exists('proyectos/excel/'.$py->sat_inv_excel)){
+                Storage::delete('proyectos/excel/'.$py->sat_inv_excel);
+            }
+        }
+
+        if($py->evidencias!=''){
+            if (Storage::exists('proyectos/evidencias/'.$py->evidencias)){
+                Storage::delete('proyectos/evidencias/'.$py->evidencias);
+            }
+        }
         Proyecto::destroy($id);
-        return Redirect::to('docenteproyecto')->with('verde','Elimino el proyecto');
+        return Redirect::to('docenteproyecto')->with('verde','Eliminó el proyecto');
     }
 }

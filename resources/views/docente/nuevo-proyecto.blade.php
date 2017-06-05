@@ -3,6 +3,22 @@
 @section('estilos')
   {!!Html::style('select2-4.0.3/dist/css/select2.min.css',['rel'=>'stylesheet'])!!}
   {!!Html::style('editor/editor.css',['rel'=>'stylesheet'])!!}
+  <style type="text/css">
+    .lista ul
+    {
+       padding-right: 0px;
+       padding-left: 0px;
+       padding-bottom: 0px;
+       padding-top: 0px;
+       margin: 0px;
+    }
+    .lista li
+    {
+       list-style-type: none;
+       display: inline;
+       padding-right: 5px;
+    }
+  </style>
 
   @include('master.extras.tablasEstilos')
 
@@ -55,11 +71,11 @@
             <div class="clearfix"></div>
         </div>  
         <div class="x_content" >
-          {!! Form::open(['route' => 'docenteproyecto.store', 'method' => 'POST', 'class'=>'form-horizontal form-label-left']) !!}                     
+          {!! Form::open(['route' => 'docenteproyecto.store', 'method' => 'POST', 'class'=>'form-horizontal form-label-left', 'enctype'=>'multipart/form-data']) !!}                     
               <div class="item form-group">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                 <label>Curso</label>
-                {!!Form::select('curso',$cursos,null,['required','id'=>'curso','class'=>'form-control unidad','style'=>'width: 100%','placeholder' => 'Seleccione'])!!}
+                {!!Form::select('curso',$cursos,null,['required','id'=>'curso','class'=>'form-control unidad','style'=>'width: 100%','placeholder' => 'Seleccione','enctype'=>'multipart/form-data'])!!}
                 </div>
               </div>
 
@@ -96,10 +112,42 @@
               </div>
               <div class="item form-group">
                 <div class="col-md-12 col-sm-12 col-xs-12">
+                  <label>Resolución de aprobación del Proyecto</label>
+                  {!!Form::text('resolucion_proyecto', null, ['class'=> 'form-control', 'placeholder'=>'Resolución de aprobación del proyecto'])!!}
+                </div>
+              </div>
+              <div class="item form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <label>Resolución de aprobación del Informe General</label>
+                  {!!Form::text('resolucion_informe', null, ['class'=> 'form-control', 'placeholder'=>'Resolución de aprobación del informe general'])!!}
+                </div>
+              </div>
+              <div class="item form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
                   <label>Beneficiarios</label>
                   {!!Form::text('beneficiarios', null, [ 'required','class'=> 'form-control', 'placeholder'=>'Beneficiarios'])!!}
                 </div>
               </div>
+              <div class="item form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12 lista">
+                <label>Satisfacción de los involucrados (adjuntar excel)</label>
+                  <ul >
+                    <li style="float:left;">
+                      {!!Form::select('satisfacion_involucrados',$satisfaccionInvolucrados,null,['class'=>'form-control unidad','style'=>'width: auto','placeholder' => 'Seleccione'])!!}
+                    </li>
+                    <li style="float:left; margin-top: 5px;">             
+                      <input type="file" name="excelSatisfaccion">
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="item form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <label>Grupo(s) de interés</label>
+                  {!!Form::text('grupo_interes', null, ['class'=> 'form-control', 'placeholder'=>'Grupo de interés'])!!}
+                </div>
+              </div>
+
               <div class="item form-group">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <label>Lugar</label>
@@ -112,6 +160,18 @@
                   {!!Form::text('porcentaje', null, [ 'required','class'=> 'form-control', 'placeholder'=>'%'])!!}
                 </div>
               </div>
+              <div class="item form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <label>Registro de participación (adjuntar lista de participación)</label>
+                  <input type="file" name="registro_participacion">
+                </div>
+              </div><br>
+              <div class="item form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <label>Evidencias (Adjuntar fotos en .pdf o .docx)</label>
+                  <input type="file" name="evidencias">
+                </div>
+              </div><br>
               <div class="item form-group">
                 <div class="col-md-12 col-sm-12 col-xs-12"><br>
                 <label>Objetivos</label>

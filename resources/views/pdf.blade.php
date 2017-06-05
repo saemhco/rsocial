@@ -7,7 +7,7 @@
 ?>
 <html>
   <head>
-    <title>Ficha Social</title>
+    <title>Reporte</title>
     <meta http-equiv="Content-Type" content="text/html;">
     <meta charset="utf-8">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -61,8 +61,9 @@
     <h2 align="center" style="font-size: 20px; font-family: fantasy;">{{$p->titulo}}</h2><br>
 
     <!--1.DATOS GENERALES-->
-    
-    <p><b>Asignatura: </b> {{$p->curso->curso}}</p>
+    <p><b>Resolución de aprobación del Proyecto: </b> {{$p->resolucion_proyecto}}</p>
+    <p><b>Resolución de aprobación del Informe General: </b>{{$p->resolucion_informe}}</p>
+
     <p>
       <b>Semestre:</b> {{$p->semestre}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <b>Ciclo:</b> {{$p->ciclo}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -78,6 +79,9 @@
     </p>
     <p><b>% Avance: </b> {{$p->porcentaje}}</p>
     <p><b>Lugar: </b> {{$p->lugar}}</p><br>
+    <p><b>Beneficiarios: </b> {{$p->beneficiarios}}</p><br>
+    <p><b>Satisfacción de los involucrados: </b> {{$satisfaccionInvolucrados[$p->satisfacion_involucrados]}}</p><br>
+    <p><b>Grupo de interés: </b>{!!$p->grupo_interes!!}</p><br>
     <p><b>Objetivos: </b><br>{!!$p->objetivos!!}</p><br>
     <p><b>Justificación: </b><br>{!!$p->justificacion!!}</p><br>
     <p><b>Logros (indicadores): </b><br>{!!$p->logros!!}</p><br>

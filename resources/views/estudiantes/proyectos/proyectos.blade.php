@@ -82,6 +82,14 @@
                                 </label>
                                 </li>
                                 <li>
+                                <label data-toggle="tooltip" title="archivos adjuntos">
+                                  <a href="#" onclick="adjunto('{{$p->id}}','{{$p->titulo}}')"
+                                   id="editar"  data-toggle="modal" data-target="#adjunto" >
+                                  <i class="fa fa-folder-open"></i>
+                                  </a>
+                                </label>
+                                </li>
+                                <li>
                                 <label data-toggle="tooltip" title="Información">
                                 <a href="#" onclick="informacion('{{$p->id}}')" id="editar"  data-toggle="modal" data-target="#informacion" >
                                    <i class="fa fa-info"></i>
@@ -106,6 +114,7 @@
               </div>
 <!--Fin Cuerpo-->
   @include('docente.acciones.descargar-modal')
+  @include('docente.acciones.adjunto-modal')
   <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" id="EditarObs"></div>
   <div class="modal fade bs-example-modal-lg in" tabindex="-1" role="dialog" aria-hidden="true" id="informacion"></div>
   <div class="modal fade bs-example-modal-lg in" tabindex="-1" role="dialog" aria-hidden="true" id="obs"></div>
@@ -176,6 +185,29 @@
           }                  
         });
       }
+
+      
+      function adjunto(ids,t){
+        var id=ids;
+        var titulo=t;
+        var route="docenteacciones/adjunto/"+id; //La ruta 
+        var data={'id':id};
+        var token=$("#token").val();
+         $.ajax({
+                headers:{'X-CSRF-TOKEN':token},
+                data:  data,
+                url:   route,
+                beforeSend: function () {
+                        $("#datos").html("Procesando, espere por favor...");
+                },
+                success:  function (response) {
+                        //console.log(response);
+                        $("#datos-adj").html(response);
+                        $("#titulo-adj").html(titulo);
+                }
+        });
+      }
+
 
   
   </script>

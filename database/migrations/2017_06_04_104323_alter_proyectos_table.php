@@ -16,6 +16,7 @@ class AlterProyectosTable extends Migration
             $table->string('grupo_interes')->after('beneficiarios');
             $table->string('registro_participacion')->after('beneficiarios');
             $table->string('satisfacion_involucrados')->after('beneficiarios');
+            $table->string('sat_inv_excel')->after('satisfacion_involucrados');
             $table->string('resolucion_proyecto')->after('titulo');
             $table->string('resolucion_informe')->after('titulo');
             $table->string('evidencias')->after('obs');

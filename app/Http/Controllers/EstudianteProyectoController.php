@@ -67,8 +67,15 @@ class EstudianteProyectoController extends Controller
                 ->join('cursos','proyectos.curso_id','=','cursos.id')
                 ->select('proyectos.*', 'users.nombres as n', 'users.apellidos as a','cursos.curso as curso')
                 ->first();
+        $satisfaccion=array(
+                          '' => '',
+                          '1' => 'Totalmente insatisfecho',
+                          '2' => 'Insatisfecho',
+                          '3' => 'Parcialmente satisfecho',
+                          '5' => 'Satisfecho',
+                          '6' => 'Totalmente satisfecho');
         $estudiantes=User::join('proyests','users.id','=','proyests.estudiante_id')->where('proyests.proyecto_id',$id)->select('users.*')->get();
-        return view('docente.acciones.informacion', compact('p','estudiantes'));        
+        return view('docente.acciones.informacion', compact('p','estudiantes','satisfaccion'));        
     }
 
     /**

@@ -84,6 +84,15 @@
                                 </li>
 
                                 <li>
+                                <label data-toggle="tooltip" title="archivos adjuntos">
+                                  <a href="#" onclick="adjunto('{{$p->id}}','{{$p->titulo}}')"
+                                   id="editar"  data-toggle="modal" data-target="#adjunto" >
+                                  <i class="fa fa-folder-open"></i>
+                                  </a>
+                                </label>
+                                </li>
+
+                                <li>
                                 <label data-toggle="tooltip" title="Subir archivo">
                                   <a href="#" onclick="subir('{{$p->id}}','{{$p->titulo}}')" 
                                    id="editar"  data-toggle="modal" data-target="#subir" >
@@ -102,7 +111,7 @@
                                 <li>
                                 <label data-toggle="tooltip" title="Editar proyecto">
                                 <a href="{{route('docenteproyecto.edit',$p->id)}}" id="editar" >
-                                   <i class="fa fa-file-text"></i>
+                                   <i class="fa fa-pencil-square-o"></i>
                                 </a>
                                 </label>
                                 </li>
@@ -138,6 +147,7 @@
               </div>
 <!--Fin Cuerpo-->
   @include('docente.acciones.descargar-modal')
+  @include('docente.acciones.adjunto-modal')
   @include('docente.acciones.subir-modal')
   <div class="modal fade bs-example-modal-sm in" tabindex="" role="dialog" aria-hidden="true" id="Integrantes" ></div>
   <div class="modal fade bs-example-modal-lg in" tabindex="-1" role="dialog" aria-hidden="true" id="informacion"></div>
@@ -187,6 +197,27 @@
                         //console.log(response);
                         $("#datos").html(response);
                         $("#titulo-d").html(titulo);
+                }
+        });
+      }
+
+      function adjunto(ids,t){
+        var id=ids;
+        var titulo=t;
+        var route="docenteacciones/adjunto/"+id; //La ruta 
+        var data={'id':id};
+        var token=$("#token").val();
+         $.ajax({
+                headers:{'X-CSRF-TOKEN':token},
+                data:  data,
+                url:   route,
+                beforeSend: function () {
+                        $("#datos").html("Procesando, espere por favor...");
+                },
+                success:  function (response) {
+                        //console.log(response);
+                        $("#datos-adj").html(response);
+                        $("#titulo-adj").html(titulo);
                 }
         });
       }
