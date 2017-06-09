@@ -43,6 +43,8 @@
     </style>
 @endsection
 @section('contenido')
+@include('estudiantes.ventana-modal')
+<a href="#" id="enlace" data-toggle="modal" data-target="#descargar"></a>
 <!--Cuerpo-->
 <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -207,7 +209,14 @@
                 }
         });
       }
-
+    //lanzamos la llamada al evento click 
+    function abrirModal(){
+      var FechaActual = '<?php echo Carbon\Carbon::now(); ?>';
+      //El modal saldrá hasta el 15 de junio
+      if (FechaActual<'2017-06-15 20:22:30') {
+         $("#enlace").click();
+      }
+    } abrirModal();
 
   
   </script>
